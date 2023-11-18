@@ -91,4 +91,6 @@ def process_frame(frame, net, face_cascade):
         emotion = detect_emotion(predicted_key_pts)
 
         # Draw keypoints, bounding box, and emotion on the frame
-        frame = show_all_keypoints(frame, keypoints, emotion, (x,
+        frame = show_all_keypoints(frame, keypoints, emotion, (x, y, w, h))
+
+    return frame
