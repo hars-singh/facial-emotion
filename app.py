@@ -8,16 +8,24 @@ import gdown
 from models import Net
 from utils import process_frame
 
+import os
+
 # Function to download the model checkpoint
 def download_checkpoint(url, output):
-    gdown.download(url, output, quiet=False)
+    # Check if the file already exists
+    if not os.path.exists(output):
+        print("Downloading model checkpoint...")
+        gdown.download(url, output, quiet=False)
+    else:
+        print("Model checkpoint already exists.")
 
 # URL and output path for the model checkpoint
 checkpoint_url = 'https://drive.google.com/uc?id=1oEPAduxUMG0j0hLWv4KlBehaxrtrz9Sr'
 checkpoint_path = 'keypoints_model_1.pt'
 
-# Download the model checkpoint
+# Download the model checkpoint only if it's not available
 download_checkpoint(checkpoint_url, checkpoint_path)
+
 
 # Load your model and any other necessary global variables
 net = Net()
