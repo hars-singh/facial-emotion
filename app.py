@@ -34,7 +34,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # Custom Video Processor
 class VideoProcessor(VideoTransformerBase):
-    frame_skip = 15  # Process every nth frame to reduce load
+    frame_skip = 5  # Process every nth frame to reduce load
 
     def __init__(self) -> None:
         self.frame_count = 0
