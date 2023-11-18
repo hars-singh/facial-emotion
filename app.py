@@ -14,14 +14,14 @@ def download_checkpoint(url, output):
 
 # URL and output path for the model checkpoint
 checkpoint_url = 'https://drive.google.com/uc?id=1oEPAduxUMG0j0hLWv4KlBehaxrtrz9Sr'
-checkpoint_path = 'saved_models/keypoints_model_1.pt'
+checkpoint_path = 'keypoints_model_1.pt'
 
 # Download the model checkpoint
 download_checkpoint(checkpoint_url, checkpoint_path)
 
 # Load your model and any other necessary global variables
 net = load_model(checkpoint_path)
-face_cascade = cv2.CascadeClassifier('path_to_haarcascade.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 class VideoProcessor(VideoTransformerBase):
     def recv(self, frame):
