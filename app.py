@@ -5,7 +5,7 @@ import cv2
 import torch
 import numpy as np
 import gdown
-from model import load_model
+from models import Net
 from utils import process_frame
 
 # Function to download the model checkpoint
@@ -20,7 +20,8 @@ checkpoint_path = 'keypoints_model_1.pt'
 download_checkpoint(checkpoint_url, checkpoint_path)
 
 # Load your model and any other necessary global variables
-net = load_model(checkpoint_path)
+net = Net()
+net.load_state_dict(torch.load('keypoints_model_1.pt'))
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 class VideoProcessor(VideoTransformerBase):
